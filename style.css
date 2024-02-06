@@ -1,0 +1,15 @@
+.info-box__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 5px;
+}
+
+.info-box__item {
+  border: solid 1px #000;
+  background-color: gray;
+}
+
+.info-box__link {
+  display: block;
+}
