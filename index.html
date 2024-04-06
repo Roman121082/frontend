@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>frontend</title>
   <link href="normalize.css" rel="stylesheet">
+  <link href="accordion.css" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
 </head>
 
@@ -15,7 +16,216 @@
     <ul class="info-box__list">
       <li class="info-box__item"></li>
       <li class="info-box__item"></li>
-      <li class="info-box__item"></li>
+      <li class="info-box__item">
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">Random</h2>
+
+          <div class="accordionItemContent">
+            <p>const number = Math.floor(Math.random() * 10 + 1);
+
+              Math.floor - Округление в меньшую сторону.
+
+              Math.ceil - Округление в большую сторону.
+
+              Math.round - Округление до ближайшего целого.
+
+              Math.trunc (не поддерживается в Internet Explorer)
+              Производит удаление дробной части без округления: 3.1 становится 3, а -1.1 — -1.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">функция / рекурсия / формула</h2>
+
+          <div class="accordionItemContent">
+            <p><code>Решение с помощью цикла:
+
+              function sumTo(n) {
+                let sum = 0;
+                for (let i = 1; i <= n; i++) {
+                  sum += i;
+                }
+                return sum;
+              }
+              
+              alert( sumTo(100) );
+              ***************************************
+
+              Решение через рекурсию:
+              
+              function sumTo(n) {
+                if (n == 1) return 1;
+                return n + sumTo(n - 1);
+              }
+              
+              alert( sumTo(100) );
+
+              *******************************************
+              Решение по формуле: sumTo(n) = n*(n+1)/2:
+              
+              function sumTo(n) {
+                return n * (n + 1) / 2;
+              }
+              
+              alert( sumTo(100) );
+            </code>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">Для добавления/удаления элементов</h2>
+          <div class="accordionItemContent">
+            <p>push(...items) – добавляет элементы в конец,
+
+              pop() – извлекает элемент с конца,
+
+              shift() – извлекает элемент с начала,
+
+              unshift(...items) – добавляет элементы в начало.
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">splice</h2>
+          <div class="accordionItemContent">
+            splice(pos, deleteCount, ...items) – начиная с индекса pos удаляет deleteCount элементов и вставляет
+            items.
+            <code>
+              let arr = ["Я", "изучаю", "JavaScript"];
+
+              // с индекса 2
+              // удалить 0 элементов
+              // вставить "сложный", "язык"
+              arr.splice(2, 0, "сложный", "язык");
+              
+              alert( arr ); // "Я", "изучаю", "сложный", "язык", "JavaScript"
+</code>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">slice</h2>
+          <div class="accordionItemContent">
+            slice(start, end) – создаёт новый массив, копируя в него элементы с индекса start до end (не включая end).
+            <code>
+  let arr = ["t", "e", "s", "t"];
+
+alert( arr.slice(1, 3) ); // e,s (копирует с 1 до 3)
+
+alert( arr.slice(-2) ); // s,t (копирует с -2 до конца)
+</code></p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">concat</h2>
+          <div class="accordionItemContent">
+            concat(...items) – возвращает новый массив: копирует все члены текущего массива и добавляет к нему items.
+            Если какой-то из items является массивом, тогда берутся его элементы.
+            Для поиска среди элементов:
+            <code>
+              let arr = [1, 2];
+
+// создать массив из: arr и [3,4]
+alert( arr.concat([3, 4]) ); // 1,2,3,4
+
+// создать массив из: arr и [3,4] и [5,6]
+alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+
+// создать массив из: arr и [3,4], потом добавить значения 5 и 6
+alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
+Обычно он копирует только элементы из массивов. Другие объекты, даже если они выглядят как массивы, добавляются как есть:
+
+let arr = [1, 2];
+
+let arrayLike = {
+  0: "что-то",
+  length: 1
+};
+
+alert( arr.concat(arrayLike) ); // 1,2,[object Object]
+…Но если массивоподобный объект имеет специальное свойство Symbol.isConcatSpreadable, то он обрабатывается как массив, с помощью concat: вместо него добавляются его элементы:
+
+let arr = [1, 2];
+
+let arrayLike = {
+  0: "что-то",
+  1: "ещё",
+  [Symbol.isConcatSpreadable]: true,
+  length: 2
+};
+
+alert( arr.concat(arrayLike) ); // 1,2,что-то,ещё
+            </code></p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">indexOf/lastIndexOf</h2>
+          <div class="accordionItemContent">indexOf/lastIndexOf(item, pos) – ищет item, начиная с позиции pos, и
+            возвращает его индекс или -1, если
+            ничего не найдено.
+
+
+            includes(value) – возвращает true, если в массиве имеется элемент value, в противном случае false.
+            find/filter(func) – фильтрует элементы через функцию и отдаёт первое/все значения, при прохождении которых
+            через функцию возвращается true.
+            findIndex похож на find, но возвращает индекс вместо значения.
+            Для перебора элементов:
+
+
+            map(func) – создаёт новый массив из результатов вызова func для каждого элемента.
+            sort(func) – сортирует массив «на месте», а потом возвращает его.
+            reverse() – «на месте» меняет порядок следования элементов на противоположный и возвращает изменённый
+            массив.
+            split/join – преобразует строку в массив и обратно.
+            reduce/reduceRight(func, initial) – вычисляет одно значение на основе всего массива, вызывая func для
+            каждого элемента и передавая промежуточный результат между вызовами.
+            Дополнительно:
+
+            Array.isArray(arr) проверяет, является ли arr массивом.
+            Пожалуйста, обратите внимание, что методы push, pop, shift, unshift, sort, reverse и splice изменяют
+            исходный массив.
+
+            Эти методы – самые используемые, их достаточно в 99% случаев. Но существуют и другие:
+
+            arr.some(fn)/arr.every(fn) проверяет массив.
+
+            Функция fn вызывается для каждого элемента массива аналогично map. Если какие-либо/все результаты вызовов
+            являются true, то метод возвращает true, иначе false.
+
+            Эти методы ведут себя примерно так же, как операторы || и &&: если fn возвращает истинное значение,
+            arr.some() немедленно возвращает true и останавливает перебор остальных элементов; если fn возвращает
+            ложное значение, arr.every() немедленно возвращает false и также прекращает перебор остальных элементов.
+
+            Мы можем использовать every для сравнения массивов:
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">forEach</h2>
+
+          <div class="accordionItemContent">
+            <p>forEach(func) – вызывает func для каждого элемента. Ничего не возвращает.
+              Для преобразования массива:
+              <code>
+                const numbers = [1, 2, 3, 4]
+
+numbers.forEach((num) => {
+  const square = num * num
+  console.log('Квадрат числа равен: ' + square)
+})</code>
+            </p>
+          </div>
+        </div>
+
+      </li>
       <li class="info-box__item">
         <a class="info-box__link" target="_blank" href="https://learn.javascript.ru/comparison">Операторы сравнения</a>
         <a class="info-box__link" target="_blank" href="https://doka.guide/js/switch/">switch</a>
@@ -105,6 +315,8 @@
       <li class="info-box__item"></li>
     </ul>
   </div>
+  <script src="js/accordion.js"></script>
 </body>
+
 
 </html>

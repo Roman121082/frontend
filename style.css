@@ -18,7 +18,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: Arial, sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   background-color: var(--body-backgraundcolor);
   color: #ffffff;
   font-weight: 400;
@@ -124,6 +124,7 @@ input {
 
 .info-box__link {
   display: block;
+  margin-bottom: 8px;
 }
 
 .info-box__link:hover {
