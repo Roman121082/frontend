@@ -20,7 +20,7 @@ body {
   font-family: Arial, sans-serif;
   font-size: 18px;
   background-color: var(--body-backgraundcolor);
-  color: #ffffff;
+  color: #405088;
   font-weight: 400;
 }
 
@@ -92,6 +92,15 @@ input {
   outline: none;
 }
 
+code {
+  color: #990dae;
+  font-weight: 600;
+}
+
+code span {
+  color: green;
+  font-weight: normal;
+}
 
 /*
 Пример контейнера
@@ -105,7 +114,9 @@ input {
 
 
 
-
+h4 {
+  margin: 0;
+}
 
 
 
@@ -119,7 +130,7 @@ input {
 
 .info-box__item {
   border: solid 1px #000;
-  background-color: gray;
+  background-color: #e5dede;
 }
 
 .info-box__link {

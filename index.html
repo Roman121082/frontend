@@ -21,17 +21,17 @@
           <h2 class="accordionItemHeading">Random</h2>
 
           <div class="accordionItemContent">
-            <p>const number = Math.floor(Math.random() * 10 + 1);
+            <code>const number = Math.floor(Math.random() * 10 + 1);</code>
 
-              Math.floor - Округление в меньшую сторону.
+            Math.floor - Округление в меньшую сторону.
 
-              Math.ceil - Округление в большую сторону.
+            Math.ceil - Округление в большую сторону.
 
-              Math.round - Округление до ближайшего целого.
+            Math.round - Округление до ближайшего целого.
 
-              Math.trunc (не поддерживается в Internet Explorer)
-              Производит удаление дробной части без округления: 3.1 становится 3, а -1.1 — -1.
-            </p>
+            Math.trunc (не поддерживается в Internet Explorer)
+            Производит удаление дробной части без округления: 3.1 становится 3, а -1.1 — -1.
+
           </div>
 
         </div>
@@ -40,8 +40,8 @@
           <h2 class="accordionItemHeading">функция / рекурсия / формула</h2>
 
           <div class="accordionItemContent">
-            <p><code>Решение с помощью цикла:
-
+            <h4>Решение с помощью цикла:</h4>
+            <p><code>
               function sumTo(n) {
                 let sum = 0;
                 for (let i = 1; i <= n; i++) {
@@ -51,25 +51,25 @@
               }
               
               alert( sumTo(100) );
+            </code>
               ***************************************
-
-              Решение через рекурсию:
-              
-              function sumTo(n) {
+            <h4>Решение через рекурсию:</h4>
+            <code>
+               function sumTo(n) {
                 if (n == 1) return 1;
                 return n + sumTo(n - 1);
               }
               
               alert( sumTo(100) );
+            </code>
+            *******************************************
+            <h4>Решение по формуле: sumTo(n) = n*(n+1)/2:</h4>
+            <code></code>
+            function sumTo(n) {
+            return n * (n + 1) / 2;
+            }
 
-              *******************************************
-              Решение по формуле: sumTo(n) = n*(n+1)/2:
-              
-              function sumTo(n) {
-                return n * (n + 1) / 2;
-              }
-              
-              alert( sumTo(100) );
+            alert( sumTo(100) );
             </code>
             </p>
           </div>
@@ -97,12 +97,12 @@
             <code>
               let arr = ["Я", "изучаю", "JavaScript"];
 
-              // с индекса 2
-              // удалить 0 элементов
-              // вставить "сложный", "язык"
+                <span>// с индекса 2</span> 
+                <span>// удалить 0 элементов</span> 
+                <span>// вставить "сложный", "язык"</span> 
               arr.splice(2, 0, "сложный", "язык");
               
-              alert( arr ); // "Я", "изучаю", "сложный", "язык", "JavaScript"
+              alert( arr ); <span>// "Я", "изучаю", "сложный", "язык", "JavaScript"</span> 
 </code>
             </p>
           </div>
@@ -115,9 +115,9 @@
             <code>
   let arr = ["t", "e", "s", "t"];
 
-alert( arr.slice(1, 3) ); // e,s (копирует с 1 до 3)
+alert( arr.slice(1, 3) ); )  <span>// e,s (копирует с 1 до 3</span>
 
-alert( arr.slice(-2) ); // s,t (копирует с -2 до конца)
+alert( arr.slice(-2) );  <span>// s,t (копирует с -2 до конца)</span>
 </code></p>
           </div>
         </div>
@@ -148,27 +148,33 @@ numbers.forEach((num) => {
             <code>
               let arr = [1, 2];
 
-// создать массив из: arr и [3,4]
-alert( arr.concat([3, 4]) ); // 1,2,3,4
+   <span>// создать массив из: arr и [3,4]</span>
+alert( arr.concat([3, 4]) );  <span>// 1,2,3,4</span>
 
-// создать массив из: arr и [3,4] и [5,6]
-alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6
+ <span>// создать массив из: arr и [3,4] и [5,6]</span>
+alert( arr.concat([3, 4], [5, 6]) ); // 1,2,3,4,5,6 <span></span>
 
-// создать массив из: arr и [3,4], потом добавить значения 5 и 6
-alert( arr.concat([3, 4], 5, 6) ); // 1,2,3,4,5,6
-Обычно он копирует только элементы из массивов. Другие объекты, даже если они выглядят как массивы, добавляются как есть:
-
-let arr = [1, 2];
+ <span>// создать массив из: arr и [3,4], потом добавить значения 5 и 6</span>
+alert( arr.concat([3, 4], 5, 6) );  <span>// 1,2,3,4,5,6</span>
+</code>
+            Обычно он копирует только элементы из массивов. Другие объекты, даже если они выглядят как массивы,
+            добавляются как есть:
+            <code>
+  let arr = [1, 2];
 
 let arrayLike = {
   0: "что-то",
   length: 1
 };
 
-alert( arr.concat(arrayLike) ); // 1,2,[object Object]
-…Но если массивоподобный объект имеет специальное свойство Symbol.isConcatSpreadable, то он обрабатывается как массив, с помощью concat: вместо него добавляются его элементы:
+alert( arr.concat(arrayLike) );  <span>// 1,2,[object Object]</span>
+</code>
 
-let arr = [1, 2];
+            …Но если массивоподобный объект имеет специальное свойство Symbol.isConcatSpreadable, то он обрабатывается
+            как массив, с помощью concat: вместо него добавляются его элементы:
+
+            <code>
+  let arr = [1, 2];
 
 let arrayLike = {
   0: "что-то",
@@ -177,8 +183,8 @@ let arrayLike = {
   length: 2
 };
 
-alert( arr.concat(arrayLike) ); // 1,2,что-то,ещё
-            </code></p>
+alert( arr.concat(arrayLike) );  <span>// 1,2,что-то,ещё</span>
+</code>
           </div>
         </div>
 
@@ -191,11 +197,11 @@ alert( arr.concat(arrayLike) ); // 1,2,что-то,ещё
             Обычно эти методы используются только с одним аргументом: искомым item. По умолчанию поиск ведется с начала.
 
             <code>
-  let arr = [1, 0, false];
+  let arr = [1, 0, false];   
 
-alert( arr.indexOf(0) ); // 1
-alert( arr.indexOf(false) ); // 2
-alert( arr.indexOf(null) ); // -1
+alert( arr.indexOf(0) );   <span>// 1</span>
+alert( arr.indexOf(false) ); <span>// 2 </span>
+alert( arr.indexOf(null) );  <span>// -1</span>
 
 alert( arr.includes(1) ); // true
 </code>
@@ -210,8 +216,8 @@ alert( arr.includes(1) ); // true
             <code>
               let fruits = ['Яблоко', 'Апельсин', 'Яблоко']
 
-              alert( fruits.indexOf('Яблоко') ); // 0 (первый 'Яблоко')
-              alert( fruits.lastIndexOf('Яблоко') ); // 2 (последний 'Яблоко')
+              alert( fruits.indexOf('Яблоко') );  <span>// 0 (первый 'Яблоко') </span>
+              alert( fruits.lastIndexOf('Яблоко') );  <span>// 2 (последний 'Яблоко')</span>
 </code>
 
             Метод includes правильно обрабатывает NaN
@@ -219,8 +225,8 @@ alert( arr.includes(1) ); // true
             indexOf:
             <code>
               const arr = [NaN];
-              alert( arr.indexOf(NaN) ); // -1 (неверно, должен быть 0)
-              alert( arr.includes(NaN) );// true (верно)
+              alert( arr.indexOf(NaN) );   <span>// -1 (неверно, должен быть 0)</span>
+              alert( arr.includes(NaN) ); <span>// true (верно)</span>
 </code>
             Это связано с тем, что includes был добавлен в JavaScript гораздо позже и использует более современный
             алгоритм сравнения.
@@ -236,8 +242,8 @@ alert( arr.includes(1) ); // true
             indexOf:
             <code>
               const arr = [NaN];
-              alert( arr.indexOf(NaN) ); // -1 (неверно, должен быть 0)
-              alert( arr.includes(NaN) );// true (верно)
+              alert( arr.indexOf(NaN) );   <span>// -1 (неверно, должен быть 0)</span>
+              alert( arr.includes(NaN) );  <span>// true (верно)</span>
 </code>
             Это связано с тем, что includes был добавлен в JavaScript гораздо позже и использует более современный
             алгоритм сравнения.
@@ -252,8 +258,8 @@ alert( arr.includes(1) ); // true
             Представьте, что у нас есть массив объектов. Как нам найти объект с определённым условием?
             <code>
               let result = arr.find(function(item, index, array) {
-                // если true - возвращается текущий элемент и перебор прерывается
-                // если все итерации оказались ложными, возвращается undefined
+                 <span>// если true - возвращается текущий элемент и перебор прерывается</span>
+                 <span>// если все итерации оказались ложными, возвращается undefined</span>
               });
             </code>
             Функция вызывается по очереди для каждого элемента массива:
@@ -275,7 +281,7 @@ alert( arr.includes(1) ); // true
             
             let user = users.find(item => item.id == 1);
             
-            alert(user.name); // Вася
+            alert(user.name);   <span>// Вася</span>
             </code>
             В реальной жизни массивы объектов – обычное дело, поэтому метод find крайне полезен.
 
@@ -294,11 +300,11 @@ alert( arr.includes(1) ); // true
               {id: 4, name: "Вася"}
             ];
             
-            // Найти индекс первого Васи
-            alert(users.findIndex(user => user.name == 'Вася')); // 0
+            // Найти индекс первого Васи  
+            alert(users.findIndex(user => user.name == 'Вася'));  <span>// 0 </span>
             
             // Найти индекс последнего Васи
-            alert(users.findLastIndex(user => user.name == 'Вася')); // 3
+            alert(users.findLastIndex(user => user.name == 'Вася'));   <span>// 3</span>
             </code>
             </p>
           </div>
@@ -313,8 +319,8 @@ alert( arr.includes(1) ); // true
 
             <code>
   let results = arr.filter(function(item, index, array) {
-    // если `true` -- элемент добавляется к results и перебор продолжается
-    // возвращается пустой массив в случае, если ничего не найдено
+      <span>// если `true` -- элемент добавляется к results и перебор продолжается</span>
+     <span>// возвращается пустой массив в случае, если ничего не найдено </span>
   });
 </code>
             Например:
@@ -325,10 +331,10 @@ alert( arr.includes(1) ); // true
               {id: 3, name: "Маша"}
             ];
             
-            // возвращает массив, состоящий из двух первых пользователей
+              <span>// возвращает массив, состоящий из двух первых пользователей </span>
             let someUsers = users.filter(item => item.id < 3);
             
-            alert(someUsers.length); // 2
+            alert(someUsers.length);  <span>// 2</span>
 </code>
             </p>
           </div>
@@ -341,13 +347,13 @@ alert( arr.includes(1) ); // true
             map(func) – создаёт новый массив из результатов вызова func для каждого элемента.
             <code>
   let result = arr.map(function(item, index, array) {
-    // возвращается новое значение вместо элемента
+      <span> // возвращается новое значение вместо элемента</span>
   });
 </code>
             Например, здесь мы преобразуем каждый элемент в его длину:
             <code>
               let lengths = ["Бильбо", "Гэндальф", "Назгул"].map(item => item.length);
-              alert(lengths); // 6,8,6
+              alert(lengths); <span>// 6,8,6 </span>
 </code>
             </p>
           </div>
@@ -364,7 +370,6 @@ arr.sort(function(a, b) { return a - b; });
 
 alert(arr);  // 1, 2, 15
 </code>
-
             <code>
   arr.sort( (a, b) => a - b );
 </code>
@@ -380,9 +385,9 @@ alert(arr);  // 1, 2, 15
             <code>
   let countries = ['Österreich', 'Andorra', 'Vietnam'];
 
-alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich (неправильно)
+alert( countries.sort( (a, b) => a > b ? 1 : -1) );  <span>// Andorra, Vietnam, Österreich (неправильно)</span>
 
-alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam (правильно!)
+alert( countries.sort( (a, b) => a.localeCompare(b) ) );  <span>// Andorra,Österreich,Vietnam (правильно!)</span>
 </code>
 
             reverse() – «на месте» меняет порядок следования элементов на противоположный и возвращает изменённый
@@ -392,7 +397,7 @@ alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,
   let arr = [1, 2, 3, 4, 5];
 arr.reverse();
 
-alert( arr ); // 5,4,3,2,1
+alert( arr );   <span>// 5,4,3,2,1</span>
 </code>
             </p>
           </div>
@@ -403,14 +408,13 @@ alert( arr ); // 5,4,3,2,1
           <h2 class="accordionItemHeading">split/join</h2>
           <div class="accordionItemContent">
             split/join – преобразует строку в массив и обратно.
-
             <code>
   let names = 'Вася, Петя, Маша';
 
 let arr = names.split(', ');
 
 for (let name of arr) {
-  alert( `Сообщение получат: ${name}.` ); // Сообщение получат: Вася (и другие имена)
+  alert( `Сообщение получат: ${name}.` );  <span>// Сообщение получат: Вася (и другие имена)</span>
 }
 </code>
             У метода split есть необязательный второй числовой аргумент – ограничение на количество элементов в массиве.
@@ -418,27 +422,23 @@ for (let name of arr) {
             <code>
               let arr = 'Вася, Петя, Маша, Саша'.split(', ', 2);
 
-              alert(arr); // Вася, Петя
+              alert(arr);  <span>// Вася, Петя</span>
 </code>
-
             Разбивка по буквам
             Вызов split(s) с пустым аргументом s разбил бы строку на массив букв:
-
             <code>
               let str = "тест";
 
-              alert( str.split('') ); // т,е,с,т
+              alert( str.split('') ); <span>// т,е,с,т </span>
 </code>
-
             Вызов arr.join(glue) делает в точности противоположное split. Он создаёт строку из элементов arr, вставляя
             glue между ними.
-
             <code>
               let arr = ['Вася', 'Петя', 'Маша'];
 
-              let str = arr.join(';'); // объединить массив в строку через ;
+              let str = arr.join(';');   <span>// объединить массив в строку через ; </span>
               
-              alert( str ); // Вася;Петя;Маша
+              alert( str );  <span>// Вася;Петя;Маша </span>
 </code>
             </p>
           </div>
@@ -450,13 +450,11 @@ for (let name of arr) {
           <div class="accordionItemContent">
             reduce/reduceRight(func, initial) – вычисляет одно значение на основе всего массива, вызывая func для
             каждого элемента и передавая промежуточный результат между вызовами.
-
             <code>
   let value = arr.reduce(function(accumulator, item, index, array) {
-    // ...
+    <span>// ... </span>
   }, [initial]);
 </code>
-
             Функция применяется по очереди ко всем элементам массива и «переносит» свой результат на следующий вызов.
 
             Аргументы:
@@ -473,7 +471,7 @@ for (let name of arr) {
 
               let result = arr.reduce((sum, current) => sum + current, 0);
               
-              alert(result); // 15
+              alert(result);  <span>// 15</span>
 </code>
             Мы также можем опустить начальное значение.
             Результат – точно такой же! Это потому, что при отсутствии initial в качестве первого значения берётся
@@ -481,10 +479,10 @@ for (let name of arr) {
             <code>
               let arr = [1, 2, 3, 4, 5];
 
-// убрано начальное значение (нет 0 в конце)
+ <span>// убрано начальное значение (нет 0 в конце) </span>
 let result = arr.reduce((sum, current) => sum + current);
 
-alert( result ); // 15
+alert( result );  <span> // 15</span>
             </code>
 
             Но такое использование требует крайней осторожности. Если массив пуст, то вызов reduce без начального
@@ -492,8 +490,8 @@ alert( result ); // 15
             <code>
               let arr = [];
 
-              // Error: Reduce of empty array with no initial value
-              // если бы существовало начальное значение, reduce вернул бы его для пустого массива.
+                <span>// Error: Reduce of empty array with no initial value</span>
+                <span>// если бы существовало начальное значение, reduce вернул бы его для пустого массива.</span>
               arr.reduce((sum, current) => sum + current);
             </code>
             </p>
@@ -525,14 +523,13 @@ alert( result ); // 15
                 return num % 2 === 0
               })
               console.log(hasEvenNumber)
-              // true
-              
+                            <span>// true</span>
               const oddNums = [3, 5, 7, 9, 11]
               const noEvenNumber = oddNums.some(num => {
                 return num % 2 === 0
               })
               console.log(noEvenNumber)
-              // false
+                 <span>// false </span>
             </code>
             </p>
           </div>
@@ -545,7 +542,6 @@ alert( result ); // 15
             Метод массива .every() позволяет узнать, удовлетворяют ли все элементы в массиве условию в функции-колбэке.
             Результатом вызова метода .every() будет boolean-значение true или false. Если хотя бы один элемент не будет
             удовлетворять условию, то результат будет false.
-
             <code>
   const users = [
   { name: 'Анна', online: true },
@@ -553,25 +549,595 @@ alert( result ); // 15
   { name: 'Саша', online: true },
 ]
 </code>
-
             Проверка, что все пользователи сейчас онлайн, вернёт true:
-
             <code>
               const isAllUsersOnline = users.every(user => {
                 return user.online
               })
               console.log(isAllUsersOnline)
-              // true
+               <span>// true</span>
 </code>
-
             Проверка, что всех пользователей зовут «Анна», вернёт false:
-
             <code>
               const isAllUsersAnna = users.every(user => {
                 return user.name === 'Анна'
               })
               console.log(isAllUsersAnna);
-              // false
+               <span>// false</span>
+</code>
+
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">Методы массивов задачи</h2>
+          <div class="accordionItemContent">
+            <h3>Переведите текст вида border-left-width в borderLeftWidth</h3>
+            <code>
+  camelize("background-color") == 'backgroundColor';
+camelize("list-style-image") == 'listStyleImage';
+camelize("-webkit-transition") == 'WebkitTransition';
+</code>
+            <code>
+              function camelize(str) {
+                return str
+                  .split('-') <span>// разбивает 'my-long-word' на массив ['my', 'long', 'word']</span>
+                  .map(
+                   <span>// Переводит в верхний регистр первые буквы всех элементом массива за исключением первого</span> 
+                   <span> // превращает ['my', 'long', 'word'] в ['my', 'Long', 'Word']</span>
+                    (word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1)
+                  )
+                  .join(''); <span>// соединяет ['my', 'Long', 'Word'] в 'myLongWord'</span>
+              }
+</code>
+            *************************************************
+            <h3>Фильтрация по диапазону</h3>
+            <code>
+  let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+alert( filtered ); <span>// 3,1 (совпадающие значения)</span> 
+
+alert( arr ); <span>// 5,3,8,1 (без изменений)</span> 
+</code>
+            <code>
+              function filterRange(arr, a, b) {
+              <span>// добавлены скобки вокруг выражения для улучшения читабельности</span>  
+                return arr.filter(item => (a <= item && item <= b));
+              }
+              
+              let arr = [5, 3, 8, 1];
+              
+              let filtered = filterRange(arr, 1, 4);
+              
+              alert( filtered );  <span>// 3,1 (совпадающие значения)</span> 
+              
+              alert( arr ); <span>// 5,3,8,1 (без изменений)</span>
+</code>
+            ************************************************
+            <h3>Фильтрация по диапазону "на месте"</h3>
+            <code>
+  let arr = [5, 3, 8, 1];
+
+  filterRangeInPlace(arr, 1, 4); <span>// удалены числа вне диапазона 1..4</span> 
+  
+  alert( arr ); <span>// [3, 1]</span>
+</code>
+            <code>
+              function filterRangeInPlace(arr, a, b) {
+
+                for (let i = 0; i < arr.length; i++) {
+                  let val = arr[i];
+              <span>// удалить, если за пределами интервала</span>
+
+                  if (val < a || val > b) {
+                    arr.splice(i, 1);
+                    i--;
+                  }
+                }
+              
+              }
+              
+              let arr = [5, 3, 8, 1];
+              
+              filterRangeInPlace(arr, 1, 4); <span>// удалены числа вне диапазона 1..4</span> 
+              
+              alert( arr ); <span>// [3, 1]</span> 
+            </code>
+            *******************************************
+            <h3>Сортировать в порядке по убыванию</h3>
+            <code>
+              let arr = [5, 2, 1, -10, 8];
+<span>// ... ваш код для сортировки по убыванию</span>
+
+alert( arr ); // 8, 5, 2, 1, -10
+            </code>
+            <code>
+              let arr = [5, 2, 1, -10, 8];
+
+              arr.sort((a, b) => b - a);
+              
+              alert( arr );
+</code>
+            *****************************************
+            <h3>Скопировать и отсортировать массив</h3>
+            <code>
+  let arr = ["HTML", "JavaScript", "CSS"];
+
+let sorted = copySorted(arr);
+
+alert( sorted ); <span>// CSS, HTML, JavaScript</span>
+alert( arr ); <span>// HTML, JavaScript, CSS (без изменений)</span>
+</code>
+            <code>
+  function copySorted(arr) {
+    return arr.slice().sort();
+  }
+  
+  let arr = ["HTML", "JavaScript", "CSS"];
+  
+  let sorted = copySorted(arr);
+  
+  alert( sorted );
+  alert( arr );
+</code>
+            **********************************************
+            <h3>Создать расширяемый калькулятор</h3>
+            Во-первых, реализуйте метод calculate(str), который принимает строку типа "1 + 2" в формате «ЧИСЛО оператор
+            ЧИСЛО» (разделено пробелами) и возвращает результат. Метод должен понимать плюс + и минус -.
+
+            Пример использования:
+            <code>
+              let calc = new Calculator;
+
+              alert( calc.calculate("3 + 7") ); // 10
+            </code>
+            Затем добавьте метод addMethod(name, func), который добавляет в калькулятор новые операции. Он принимает
+            оператор name и функцию с двумя аргументами func(a,b), которая описывает его.
+
+            Например, давайте добавим умножение *, деление / и возведение в степень **:
+            <code>
+              let powerCalc = new Calculator;
+              powerCalc.addMethod("*", (a, b) => a * b);
+              powerCalc.addMethod("/", (a, b) => a / b);
+              powerCalc.addMethod("**", (a, b) => a ** b);
+              
+              let result = powerCalc.calculate("2 ** 3");
+              alert( result ); // 8
+            </code>
+            Для этой задачи не нужны скобки или сложные выражения.
+            Числа и оператор разделены ровно одним пробелом.
+            Не лишним будет добавить обработку ошибок.
+            <h4>Код</h4>
+            <code>
+              function Calculator() {
+
+                this.methods = {
+                  "-": (a, b) => a - b,
+                  "+": (a, b) => a + b
+                };
+              
+                this.calculate = function(str) {
+              
+                  let split = str.split(' '),
+                    a = +split[0],
+                    op = split[1],
+                    b = +split[2]
+              
+                  if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+                    return NaN;
+                  }
+              
+                  return this.methods[op](a, b);
+                }
+              
+                this.addMethod = function(name, func) {
+                  this.methods[name] = func;
+                };
+              }
+             </code>
+            Обратите внимание, как хранятся методы. Они просто добавляются к внутреннему объекту.
+            Все тесты и числовые преобразования выполняются в методе calculate. В будущем он может быть расширен для
+            поддержки более сложных выражений.
+            *********************************************
+            <h3>Трансформировать в массив имён</h3>
+            <code>
+  let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let users = [ vasya, petya, masha ];
+
+let names =  <span>/* ... ваш код */</span>
+
+alert( names );   <span>// Вася, Петя, Маша</span>
+</code>
+            <code>
+  let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let users = [ vasya, petya, masha ];
+
+let names = users.map(item => item.name);
+
+alert( names ); <span>// Вася, Петя, Маша</span>
+</code>
+            ********************************************
+            <h3>Трансформировать в объекты</h3>
+            <code>
+  let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya = { name: "Петя", surname: "Иванов", id: 2 };
+let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+let users = [ vasya, petya, masha ];
+
+let usersMapped = users.map(user => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+}));
+
+/*
+usersMapped = [
+  { fullName: "Вася Пупкин", id: 1 },
+  { fullName: "Петя Иванов", id: 2 },
+  { fullName: "Маша Петрова", id: 3 }
+]
+*/
+
+alert( usersMapped[0].id );   <span>// 1</span>
+alert( usersMapped[0].fullName );  <span>// Вася Пупкин</span>
+</code>
+            ***********************************************
+            <h3>Отсортировать пользователей по возрасту</h3>
+            <code>
+  function sortByAge(arr) {
+    arr.sort((a, b) => a.age > b.age ? 1 : -1);
+  }
+  
+  let vasya = { name: "Вася", age: 25 };
+  let petya = { name: "Петя", age: 30 };
+  let masha = { name: "Маша", age: 28 };
+  
+  let arr = [ vasya, petya, masha ];
+  
+  sortByAge(arr);
+  
+  // теперь отсортировано: [vasya, masha, petya]
+  alert(arr[0].name);  <span>// Вася </span>
+  alert(arr[1].name);  <span>// Маша</span>
+  alert(arr[2].name);  <span>// Петя</span>
+</code>
+            *******************************************
+            <h3>Перемешайте массив</h3>
+            Напишите функцию shuffle(array), которая перемешивает (переупорядочивает случайным образом) элементы
+            массива.
+
+            Многократные прогоны через shuffle могут привести к разным последовательностям элементов. Например:
+            <code>
+              let arr = [1, 2, 3];
+
+              shuffle(arr);
+                <span>// arr = [3, 2, 1]</span>
+              
+              shuffle(arr);
+                <span>// arr = [2, 1, 3]</span>
+              
+              shuffle(arr);
+                <span>// arr = [3, 1, 2]</span>
+                <span>// ...</span>
+</code>
+            Все последовательности элементов должны иметь одинаковую вероятность. Например, [1,2,3] может быть
+            переупорядочено как [1,2,3] или [1,3,2], или [3,1,2] и т.д., с равной вероятностью каждого случая.
+            <code>
+              function shuffle(array) {
+                array.sort(() => Math.random() - 0.5);
+              }
+              
+              let arr = [1, 2, 3];
+              shuffle(arr);
+              alert(arr);
+</code>
+            *********************************************
+            <h3>Получить средний возраст</h3>
+            <code>
+  function getAverageAge(users) {
+    return users.reduce((prev, user) => prev + user.age, 0) / users.length;
+  }
+  
+  let vasya = { name: "Вася", age: 25 };
+  let petya = { name: "Петя", age: 30 };
+  let masha = { name: "Маша", age: 29 };
+  
+  let arr = [ vasya, petya, masha ];
+  
+  alert( getAverageAge(arr) );       <span>// 28 </span>
+</code>
+            ************************************************
+            <h3>Оставить уникальные элементы массива</h3>
+            <code>
+  function unique(arr) {
+    let result = [];
+  
+    for (let str of arr) {
+      if (!result.includes(str)) {
+        result.push(str);
+      }
+    }
+  
+    return result;
+  }
+  
+  let strings = ["кришна", "кришна", "харе", "харе",
+    "харе", "харе", "кришна", "кришна", ":-O"
+  ];
+  
+  alert( unique(strings) );   <span>// кришна, харе, :-O</span>
+</code>
+            ********************************************
+            <h3>Создайте объект с ключами из массива</h3>
+            <code>
+  let users = [
+  {id: 'john', name: "John Smith", age: 20},
+  {id: 'ann', name: "Ann Smith", age: 24},
+  {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+let usersById = groupById(users);
+
+  <span>/*
+    // после вызова у нас должно получиться:
+    
+    usersById = {
+      john: {id: 'john', name: "John Smith", age: 20},
+      ann: {id: 'ann', name: "Ann Smith", age: 24},
+      pete: {id: 'pete', name: "Pete Peterson", age: 31},
+    }
+    */</span>
+</code>
+            Такая функция очень удобна при работе с данными, которые приходят с сервера.
+
+            В этой задаче мы предполагаем, что id уникален. Не может быть двух элементов массива с одинаковым id.
+
+            Используйте метод .reduce в решении.
+            <code>
+              function groupById(array) {
+                return array.reduce((obj, value) => {
+                  obj[value.id] = value;
+                  return obj;
+                }, {})
+              }
+</code>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">Рекурсия задачи</h2>
+          <div class="accordionItemContent">
+            <h3>Факториал</h3>
+            По определению факториал n! можно записать как n * (n-1)!.
+            Другими словами, factorial(n) можно получить как n умноженное на результат factorial(n-1). И результат для
+
+            n-1, в свою очередь, может быть вычислен рекурсивно и так далее до 1.
+            <code>
+              function factorial(n) {
+                return (n != 1) ? n * factorial(n - 1) : 1;
+              }
+              
+              alert( factorial(5) ); <span>// 120</span> 
+            </code>
+            Базисом рекурсии является значение 1. А можно было бы сделать базисом и 0, однако это добавило рекурсии
+            дополнительный шаг:
+            <code>
+              function factorial(n) {
+                return n ? n * factorial(n - 1) : 1;
+              }
+              
+              alert( factorial(5) ); <span>// 120</span> 
+            </code>
+            ****************************************************
+            <h3>Числа Фибоначчи</h3>
+
+            Последовательность чисел Фибоначчи определяется формулой Fn = Fn-1 + Fn-2. То есть, следующее число
+            получается как сумма двух предыдущих.
+
+            Первые два числа равны 1, затем 2(1+1), затем 3(1+2), 5(2+3) и так далее: 1, 1, 2, 3, 5, 8, 13, 21....
+            <code>
+              function fib(n) {
+                return n <= 1 ? n : fib(n - 1) + fib(n - 2);
+              }
+              
+              alert( fib(3) );  <span>// 2 </span> 
+              alert( fib(7) ); <span>// 13</span> 
+              fib(77); <span>//вычисляется очень долго</span> 
+            </code>
+            При больших значениях n такое решение будет работать очень долго. Например, fib(77) может повесить браузер
+            на некоторое время, съев все ресурсы процессора.
+
+            Это потому, что функция порождает обширное дерево вложенных вызовов. При этом ряд значений вычисляется много
+            раз снова и снова.
+
+            Например, посмотрим на отрывок вычислений для fib(5):
+            <code>
+              ...
+              fib(5) = fib(4) + fib(3)
+              fib(4) = fib(3) + fib(2)
+              ...
+</code>
+            Здесь видно, что значение fib(3) нужно одновременно и для fib(5) и для fib(4). В коде оно будет вычислено
+            два раза, совершенно независимо.
+            *****************************************************
+            <h3>Вывод односвязного списка</h3>
+            <code>
+  let list = {
+    value: 1,
+    next: {
+      value: 2,
+      next: {
+        value: 3,
+        next: {
+          value: 4,
+          next: null
+        }
+      }
+    }
+  };
+</code>
+            <h4>Решение с использованием цикла </h4>
+            <code>
+              let list = {
+                value: 1,
+                next: {
+                  value: 2,
+                  next: {
+                    value: 3,
+                    next: {
+                      value: 4,
+                      next: null
+                    }
+                  }
+                }
+              };
+              
+              function printList(list) {
+                let tmp = list;
+              
+                while (tmp) {
+                  alert(tmp.value);
+                  tmp = tmp.next;
+                }
+              
+              }
+              
+              printList(list);
+</code>
+            Обратите внимание, что мы используем временную переменную tmp для перемещения по списку. Технически, мы
+            могли бы использовать параметр функции list вместо неё:
+            <code>
+              function printList(list) {
+
+                while(list) {
+                  alert(list.value);
+                  list = list.next;
+                }
+              
+              }
+</code>
+            …Но это было бы неблагоразумно. В будущем нам может понадобиться расширить функцию, сделать что-нибудь ещё
+            со списком. Если мы меняем list, то теряем такую возможность.
+
+            Говоря о хороших именах для переменных, list здесь – это сам список, его первый элемент. Так и должно быть,
+            это просто и понятно.
+
+            С другой стороны, tmp используется исключительно для обхода списка, как i в цикле for.
+
+            -------------------------------------------
+            <h4>Решение через рекурсию</h4>
+            Рекурсивный вариант printList(list) следует простой логике: для вывода списка мы должны вывести текущий
+            list, затем сделать то же самое для list.next:
+            <code>
+              let list = {
+                value: 1,
+                next: {
+                  value: 2,
+                  next: {
+                    value: 3,
+                    next: {
+                      value: 4,
+                      next: null
+                    }
+                  }
+                }
+              };
+              
+              function printList(list) {
+              
+                alert(list.value);<span>// выводим текущий элемент</span> 
+              
+                if (list.next) {
+                  printList(list.next); <span>// делаем то же самое для остальной части списка</span>
+                }
+              
+              }
+              
+              printList(list);
+</code>
+            ********************************************************
+            <h3>Вывод односвязного списка в обратном порядке</h3>
+            <h4> С использованием цикла </h4>
+            Вариант с использованием цикла сложнее, чем в предыдущей задаче.
+
+            Нет способа сразу получить последнее значение в списке list. Мы также не можем «вернуться назад», к
+            предыдущему элементу списка.
+
+            Поэтому мы можем сначала перебрать элементы в прямом порядке и запомнить их в массиве, а затем вывести то,
+            что мы запомнили, в обратном порядке:
+            <code>
+              let list = {
+                value: 1,
+                next: {
+                  value: 2,
+                  next: {
+                    value: 3,
+                    next: {
+                      value: 4,
+                      next: null
+                    }
+                  }
+                }
+              };
+              
+              function printReverseList(list) {
+                let arr = [];
+                let tmp = list;
+              
+                while (tmp) {
+                  arr.push(tmp.value);
+                  tmp = tmp.next;
+                }
+              
+                for (let i = arr.length - 1; i >= 0; i--) {
+                  alert( arr[i] );
+                }
+              }
+              
+              printReverseList(list);
+</code>
+            Обратите внимание, что рекурсивное решение на самом деле делает то же самое: проходит список, запоминает
+            элементы в цепочке вложенных вызовов (в контексте выполнения), а затем выводит их.
+            ----------------------------------------------------
+            <h4>Решение через рекурсию</h4>
+            Рекурсивная логика в этом случае немного сложнее.
+
+            Сначала надо вывести оставшуюся часть списка, а затем текущий элемент:
+            <code>
+              let list = {
+                value: 1,
+                next: {
+                  value: 2,
+                  next: {
+                    value: 3,
+                    next: {
+                      value: 4,
+                      next: null
+                    }
+                  }
+                }
+              };
+              
+              function printReverseList(list) {
+              
+                if (list.next) {
+                  printReverseList(list.next);
+                }
+              
+                alert(list.value);
+              }
+              
+              printReverseList(list);
 </code>
             </p>
           </div>
@@ -660,12 +1226,8 @@ alert( result ); // 15
         <a class="info-box__link" target="_blank" href="https://learn.javascript.ru/closures-module">Модуль
           IIFE</a>
       </li>
-      <li class="info-box__item"></li>
-      <li class="info-box__item"></li>
-      <li class="info-box__item"></li>
-      <li class="info-box__item"></li>
-      <li class="info-box__item"></li>
-      <li class="info-box__item"></li>
+      <!-- <li class="info-box__item"></li> -->
+
     </ul>
   </div>
   <script src="js/accordion.js"></script>
