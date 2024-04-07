@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>frontend</title>
-  <link href="normalize.css" rel="stylesheet">
-  <link href="accordion.css" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/accordion.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -123,6 +123,23 @@ alert( arr.slice(-2) ); // s,t (копирует с -2 до конца)
         </div>
 
         <div class="accordionItem close">
+          <h2 class="accordionItemHeading">forEach</h2>
+          <div class="accordionItemContent">
+            <p>forEach(func) – вызывает func для каждого элемента. Ничего не возвращает.
+              Для преобразования массива:
+              <code>
+                const numbers = [1, 2, 3, 4]
+
+numbers.forEach((num) => {
+  const square = num * num
+  console.log('Квадрат числа равен: ' + square)
+})</code>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
           <h2 class="accordionItemHeading">concat</h2>
           <div class="accordionItemContent">
             concat(...items) – возвращает новый массив: копирует все члены текущего массива и добавляет к нему items.
@@ -166,64 +183,400 @@ alert( arr.concat(arrayLike) ); // 1,2,что-то,ещё
         </div>
 
         <div class="accordionItem close">
-          <h2 class="accordionItemHeading">indexOf/lastIndexOf</h2>
-          <div class="accordionItemContent">indexOf/lastIndexOf(item, pos) – ищет item, начиная с позиции pos, и
-            возвращает его индекс или -1, если
-            ничего не найдено.
+          <h2 class="accordionItemHeading">indexOf/ lastIndexOf</h2>
+          <div class="accordionItemContent">arr.indexOf(item, from) ищет item начиная с индекса from и возвращает номер
+            индекса, на котором был найден искомый элемент, в противном случае -1.
 
+            arr.includes(item, from) ищет item начиная с индекса from и возвращает true, если поиск успешен.
+            Обычно эти методы используются только с одним аргументом: искомым item. По умолчанию поиск ведется с начала.
 
-            includes(value) – возвращает true, если в массиве имеется элемент value, в противном случае false.
-            find/filter(func) – фильтрует элементы через функцию и отдаёт первое/все значения, при прохождении которых
-            через функцию возвращается true.
-            findIndex похож на find, но возвращает индекс вместо значения.
-            Для перебора элементов:
+            <code>
+  let arr = [1, 0, false];
 
+alert( arr.indexOf(0) ); // 1
+alert( arr.indexOf(false) ); // 2
+alert( arr.indexOf(null) ); // -1
 
-            map(func) – создаёт новый массив из результатов вызова func для каждого элемента.
-            sort(func) – сортирует массив «на месте», а потом возвращает его.
-            reverse() – «на месте» меняет порядок следования элементов на противоположный и возвращает изменённый
-            массив.
-            split/join – преобразует строку в массив и обратно.
-            reduce/reduceRight(func, initial) – вычисляет одно значение на основе всего массива, вызывая func для
-            каждого элемента и передавая промежуточный результат между вызовами.
-            Дополнительно:
+alert( arr.includes(1) ); // true
+</code>
 
-            Array.isArray(arr) проверяет, является ли arr массивом.
-            Пожалуйста, обратите внимание, что методы push, pop, shift, unshift, sort, reverse и splice изменяют
-            исходный массив.
+            Пожалуйста, обратите внимание, что методы используют строгое сравнение ===. Таким образом, если мы ищем
+            false, он находит именно false, а не ноль.
 
-            Эти методы – самые используемые, их достаточно в 99% случаев. Но существуют и другие:
+            Если мы хотим проверить наличие элемента в массиве и нет необходимости знать его индекс, предпочтительно
+            использовать arr.includes.
 
-            arr.some(fn)/arr.every(fn) проверяет массив.
+            Метод arr.lastIndexOf похож на indexOf, но ищет справа налево.
+            <code>
+              let fruits = ['Яблоко', 'Апельсин', 'Яблоко']
 
-            Функция fn вызывается для каждого элемента массива аналогично map. Если какие-либо/все результаты вызовов
-            являются true, то метод возвращает true, иначе false.
+              alert( fruits.indexOf('Яблоко') ); // 0 (первый 'Яблоко')
+              alert( fruits.lastIndexOf('Яблоко') ); // 2 (последний 'Яблоко')
+</code>
 
-            Эти методы ведут себя примерно так же, как операторы || и &&: если fn возвращает истинное значение,
-            arr.some() немедленно возвращает true и останавливает перебор остальных элементов; если fn возвращает
-            ложное значение, arr.every() немедленно возвращает false и также прекращает перебор остальных элементов.
-
-            Мы можем использовать every для сравнения массивов:
+            Метод includes правильно обрабатывает NaN
+            Незначительная, но заслуживающая внимания особенность includes – он правильно обрабатывает NaN, в отличие от
+            indexOf:
+            <code>
+              const arr = [NaN];
+              alert( arr.indexOf(NaN) ); // -1 (неверно, должен быть 0)
+              alert( arr.includes(NaN) );// true (верно)
+</code>
+            Это связано с тем, что includes был добавлен в JavaScript гораздо позже и использует более современный
+            алгоритм сравнения.
             </p>
           </div>
         </div>
 
         <div class="accordionItem close">
-          <h2 class="accordionItemHeading">forEach</h2>
-
+          <h2 class="accordionItemHeading">includes</h2>
           <div class="accordionItemContent">
-            <p>forEach(func) – вызывает func для каждого элемента. Ничего не возвращает.
-              Для преобразования массива:
-              <code>
-                const numbers = [1, 2, 3, 4]
-
-numbers.forEach((num) => {
-  const square = num * num
-  console.log('Квадрат числа равен: ' + square)
-})</code>
+            Метод includes правильно обрабатывает NaN
+            Незначительная, но заслуживающая внимания особенность includes – он правильно обрабатывает NaN, в отличие от
+            indexOf:
+            <code>
+              const arr = [NaN];
+              alert( arr.indexOf(NaN) ); // -1 (неверно, должен быть 0)
+              alert( arr.includes(NaN) );// true (верно)
+</code>
+            Это связано с тем, что includes был добавлен в JavaScript гораздо позже и использует более современный
+            алгоритм сравнения.
             </p>
           </div>
         </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">find и findIndex / findLastIndex</h2>
+          <div class="accordionItemContent">
+            Представьте, что у нас есть массив объектов. Как нам найти объект с определённым условием?
+            <code>
+              let result = arr.find(function(item, index, array) {
+                // если true - возвращается текущий элемент и перебор прерывается
+                // если все итерации оказались ложными, возвращается undefined
+              });
+            </code>
+            Функция вызывается по очереди для каждого элемента массива:
+
+            item – очередной элемент.
+            index – его индекс.
+            array – сам массив.
+            Если функция возвращает true, поиск прерывается и возвращается item. Если ничего не найдено, возвращается
+            undefined.
+
+            Например, у нас есть массив пользователей, каждый из которых имеет поля id и name. Найдем пользователя с id
+            == 1:
+            <code>
+              let users = [
+              {id: 1, name: "Вася"},
+              {id: 2, name: "Петя"},
+              {id: 3, name: "Маша"}
+            ];
+            
+            let user = users.find(item => item.id == 1);
+            
+            alert(user.name); // Вася
+            </code>
+            В реальной жизни массивы объектов – обычное дело, поэтому метод find крайне полезен.
+
+            Обратите внимание, что в данном примере мы передаём find функцию item => item.id == 1 с одним аргументом.
+            Это типично, другие аргументы этой функции используются редко.
+
+            У метода arr.findIndex такой же синтаксис, но он возвращает индекс, на котором был найден элемент, а не сам
+            элемент. Значение -1 возвращается, если ничего не найдено.
+
+            Метод arr.findLastIndex похож на findIndex, но ищет справа налево, наподобие lastIndexOf.
+            <code>
+              let users = [
+              {id: 1, name: "Вася"},
+              {id: 2, name: "Петя"},
+              {id: 3, name: "Маша"},
+              {id: 4, name: "Вася"}
+            ];
+            
+            // Найти индекс первого Васи
+            alert(users.findIndex(user => user.name == 'Вася')); // 0
+            
+            // Найти индекс последнего Васи
+            alert(users.findLastIndex(user => user.name == 'Вася')); // 3
+            </code>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">filter</h2>
+          <div class="accordionItemContent">
+            Метод find ищет один (первый) элемент, который заставит функцию вернуть true.
+            Если найденных элементов может быть много, можно использовать arr.filter(fn).
+            Синтаксис схож с find, но filter возвращает массив из всех подходящих элементов:
+
+            <code>
+  let results = arr.filter(function(item, index, array) {
+    // если `true` -- элемент добавляется к results и перебор продолжается
+    // возвращается пустой массив в случае, если ничего не найдено
+  });
+</code>
+            Например:
+            <code>
+              let users = [
+              {id: 1, name: "Вася"},
+              {id: 2, name: "Петя"},
+              {id: 3, name: "Маша"}
+            ];
+            
+            // возвращает массив, состоящий из двух первых пользователей
+            let someUsers = users.filter(item => item.id < 3);
+            
+            alert(someUsers.length); // 2
+</code>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">map</h2>
+          <div class="accordionItemContent">
+            map(func) – создаёт новый массив из результатов вызова func для каждого элемента.
+            <code>
+  let result = arr.map(function(item, index, array) {
+    // возвращается новое значение вместо элемента
+  });
+</code>
+            Например, здесь мы преобразуем каждый элемент в его длину:
+            <code>
+              let lengths = ["Бильбо", "Гэндальф", "Назгул"].map(item => item.length);
+              alert(lengths); // 6,8,6
+</code>
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">sort</h2>
+          <div class="accordionItemContent">
+            sort(func) – сортирует массив «на месте», а потом возвращает его.
+            <code>
+  let arr = [ 1, 2, 15 ];
+
+arr.sort(function(a, b) { return a - b; });
+
+alert(arr);  // 1, 2, 15
+</code>
+
+            <code>
+  arr.sort( (a, b) => a - b );
+</code>
+
+            Используйте localeCompare для строк
+            Помните алгоритм сравнения строк? По умолчанию, он сравнивает буквы по их кодам.
+
+            Для многих алфавитов лучше использовать метод str.localeCompare, для правильной сортировки букв, таких как
+            Ö.
+
+            Например, отсортируем несколько стран на немецком языке:
+
+            <code>
+  let countries = ['Österreich', 'Andorra', 'Vietnam'];
+
+alert( countries.sort( (a, b) => a > b ? 1 : -1) ); // Andorra, Vietnam, Österreich (неправильно)
+
+alert( countries.sort( (a, b) => a.localeCompare(b) ) ); // Andorra,Österreich,Vietnam (правильно!)
+</code>
+
+            reverse() – «на месте» меняет порядок следования элементов на противоположный и возвращает изменённый
+            массив.
+
+            <code>
+  let arr = [1, 2, 3, 4, 5];
+arr.reverse();
+
+alert( arr ); // 5,4,3,2,1
+</code>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">split/join</h2>
+          <div class="accordionItemContent">
+            split/join – преобразует строку в массив и обратно.
+
+            <code>
+  let names = 'Вася, Петя, Маша';
+
+let arr = names.split(', ');
+
+for (let name of arr) {
+  alert( `Сообщение получат: ${name}.` ); // Сообщение получат: Вася (и другие имена)
+}
+</code>
+            У метода split есть необязательный второй числовой аргумент – ограничение на количество элементов в массиве.
+            Если их больше, чем указано, то остаток массива будет отброшен. На практике это редко используется:
+            <code>
+              let arr = 'Вася, Петя, Маша, Саша'.split(', ', 2);
+
+              alert(arr); // Вася, Петя
+</code>
+
+            Разбивка по буквам
+            Вызов split(s) с пустым аргументом s разбил бы строку на массив букв:
+
+            <code>
+              let str = "тест";
+
+              alert( str.split('') ); // т,е,с,т
+</code>
+
+            Вызов arr.join(glue) делает в точности противоположное split. Он создаёт строку из элементов arr, вставляя
+            glue между ними.
+
+            <code>
+              let arr = ['Вася', 'Петя', 'Маша'];
+
+              let str = arr.join(';'); // объединить массив в строку через ;
+              
+              alert( str ); // Вася;Петя;Маша
+</code>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">reduce</h2>
+          <div class="accordionItemContent">
+            reduce/reduceRight(func, initial) – вычисляет одно значение на основе всего массива, вызывая func для
+            каждого элемента и передавая промежуточный результат между вызовами.
+
+            <code>
+  let value = arr.reduce(function(accumulator, item, index, array) {
+    // ...
+  }, [initial]);
+</code>
+
+            Функция применяется по очереди ко всем элементам массива и «переносит» свой результат на следующий вызов.
+
+            Аргументы:
+
+            accumulator – результат предыдущего вызова этой функции, равен initial при первом вызове (если передан
+            initial),
+            item – очередной элемент массива,
+            index – его позиция,
+            array – сам массив.
+
+            Тут мы получим сумму всех элементов массива одной строкой:
+            <code>
+              let arr = [1, 2, 3, 4, 5];
+
+              let result = arr.reduce((sum, current) => sum + current, 0);
+              
+              alert(result); // 15
+</code>
+            Мы также можем опустить начальное значение.
+            Результат – точно такой же! Это потому, что при отсутствии initial в качестве первого значения берётся
+            первый элемент массива, а перебор стартует со второго.
+            <code>
+              let arr = [1, 2, 3, 4, 5];
+
+// убрано начальное значение (нет 0 в конце)
+let result = arr.reduce((sum, current) => sum + current);
+
+alert( result ); // 15
+            </code>
+
+            Но такое использование требует крайней осторожности. Если массив пуст, то вызов reduce без начального
+            значения выдаст ошибку.
+            <code>
+              let arr = [];
+
+              // Error: Reduce of empty array with no initial value
+              // если бы существовало начальное значение, reduce вернул бы его для пустого массива.
+              arr.reduce((sum, current) => sum + current);
+            </code>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">Array.isArray(arr)</h2>
+          <div class="accordionItemContent">
+            Array.isArray(arr) проверяет, является ли arr массивом.
+            Пожалуйста, обратите внимание, что методы push, pop, shift, unshift, sort, reverse и splice изменяют
+            исходный массив.
+
+            Эти методы – самые используемые, их достаточно в 99% случаев. Но существуют и другие:
+            </p>
+          </div>
+        </div>
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">arr.some(fn)</h2>
+          <div class="accordionItemContent">
+            Метод массива some() позволяет узнать, есть ли в массиве хотя бы один элемент, удовлетворяющий условию в
+            функции-колбэке. Колбэк-функция будет вызываться для каждого элемента массива до тех пор, пока не вернётся
+            true, либо пока не закончатся элементы массива
+            <code>
+              const nums = [3, 5, 7, 8, 9, 11]
+              const hasEvenNumber = nums.some(num => {
+                return num % 2 === 0
+              })
+              console.log(hasEvenNumber)
+              // true
+              
+              const oddNums = [3, 5, 7, 9, 11]
+              const noEvenNumber = oddNums.some(num => {
+                return num % 2 === 0
+              })
+              console.log(noEvenNumber)
+              // false
+            </code>
+            </p>
+          </div>
+        </div>
+
+
+        <div class="accordionItem close">
+          <h2 class="accordionItemHeading">arr.every()</h2>
+          <div class="accordionItemContent">
+            Метод массива .every() позволяет узнать, удовлетворяют ли все элементы в массиве условию в функции-колбэке.
+            Результатом вызова метода .every() будет boolean-значение true или false. Если хотя бы один элемент не будет
+            удовлетворять условию, то результат будет false.
+
+            <code>
+  const users = [
+  { name: 'Анна', online: true },
+  { name: 'Михаил', online: true },
+  { name: 'Саша', online: true },
+]
+</code>
+
+            Проверка, что все пользователи сейчас онлайн, вернёт true:
+
+            <code>
+              const isAllUsersOnline = users.every(user => {
+                return user.online
+              })
+              console.log(isAllUsersOnline)
+              // true
+</code>
+
+            Проверка, что всех пользователей зовут «Анна», вернёт false:
+
+            <code>
+              const isAllUsersAnna = users.every(user => {
+                return user.name === 'Анна'
+              })
+              console.log(isAllUsersAnna);
+              // false
+</code>
+            </p>
+          </div>
+        </div>
+
 
       </li>
       <li class="info-box__item">
