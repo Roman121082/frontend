@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>frontend</title>
+  <link href="css/normalize.css" rel="stylesheet">
+  <link href="css/accordion.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="info-box">
+    <nav class="nav-menu">
+      <ul class="menu__list">
+        <li class="menu__list-item"><a href="html.html">html</a></li>
+        <li class="menu__list-item"><a href="css.html">css</a></li>
+        <li class="menu__list-item"><a href="js.html">js</a></li>
+        <li class="menu__list-item"><a href="js2.html">js2</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <ul class="content">
+    <!-- css======================================================== -->
+    <li class="info-box__item">
+
+
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Псевдоклассы</h2>
+
+        <div class="accordionItemContent">
+          :active
+          :is()
+          :any-link, :link, :visited
+          :checked
+          :default
+          :dir()
+          :disabled, :enabled
+          :empty
+          Псевдоклассы группы child
+          Псевдоклассы группы type
+          :fullscreen
+          :focus и :focus-within
+          :has()
+          :hover
+          :indeterminate
+          :in-range и :out-of-range
+          :lang()
+          :not()
+          :optional и :required
+          :read-only и :read-write
+          :root
+          :target
+        </div>
+
+      </div>
+
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Псевдоэлементы</h2>
+
+        <div class="accordionItemContent">
+          ::before и ::after
+          ::first-letter
+          ::first-line
+          ::selection
+          ::placeholder
+          ::marker
+          ::backdrop
+        </div>
+
+      </div>
+
+      <!---------------------------------------------->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">display</h2>
+        <div class="accordionItemContent">
+          None
+          Block
+          inline
+          inline-block
+          Flex
+          Grid
+        </div>
+      </div>
+      <!---------------------------------------------->
+
+      <!---------------------------------------------->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">@keyFrames</h2>
+        <div class="accordionItemContent">
+          .item{
+          animation: rotate 1s infinite;
+          }
+
+          @keyFrames rotate {
+          from {
+          transform: rotateX(0deg);
+          }
+          to {
+          transform: rotateX(360deg);
+          }
+          }
+        </div>
+      </div>
+      <!---------------------------------------------->
+
+      <!---------------------------------------------->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">position</h2>
+        <div class="accordionItemContent">
+          static
+          relative
+          absolute
+          fixed
+          sticky
+        </div>
+      </div>
+      <!---------------------------------------------->
+
+      <!---------------------------------------------->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">кастомный checkbox</h2>
+        <div class="accordionItemContent">
+
+          <div>
+            <div><span>&nbsp; </span><span>&lt;</span><span>input</span><span>
+              </span><span>type</span><span>=</span><span>"checkbox"</span><span>&gt;</span></div>
+            <br />
+            <div><span>&nbsp; </span><span>&lt;</span><span>input</span><span>
+              </span><span>id</span><span>=</span><span>"check"</span><span>
+              </span><span>type</span><span>=</span><span>"checkbox"</span><span>&gt;</span></div>
+            <div><span>&nbsp; </span><span>&lt;</span><span>label</span><span>
+              </span><span>for</span><span>=</span><span>"check"</span><span>&gt;&lt;/</span><span>label</span><span>&gt;</span><span>
+              </span></div>
+          </div>
+
+          input {
+          opacity: 0;
+          }
+
+          label {
+          background-color: black;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          }
+
+          input:checked+label {
+          background-color: red;
+          }
+
+        </div>
+      </div>
+      <!---------------------------------------------->
+
+      <!---------------------------------------------->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Адаптивные изображения</h2>
+        <div class="accordionItemContent">
+          <div>
+            <div><span>&lt;</span><span>picture</span><span>&gt;</span></div>
+            <div><span>&nbsp; </span><span>&lt;</span><span>source</span><span>
+              </span><span>media</span><span>=</span><span>"(max-width: 992px)"</span><span>
+              </span><span>srcset</span><span>=</span><span>"./img/1.jpg"</span><span>/&gt;</span></div>
+            <div><span>&nbsp; </span><span>&lt;</span><span>source</span><span>
+              </span><span>media</span><span>=</span><span>"(max-height: 576px)"</span><span>
+              </span><span>srcset</span><span>=</span><span>"./img/2.jpg"</span><span>/&gt;</span></div>
+            <div><span>&nbsp; </span><span>&lt;</span><span>img</span><span>
+              </span><span>src</span><span>=</span><span>"./img/3.jpg"</span><span>
+              </span><span>alt</span><span>=</span><span>""</span><span>&gt;</span></div>
+            <div><span>&lt;/</span><span>picture</span><span>&gt;</span></div>
+          </div>
+        </div>
+      </div>
+      <!---------------------------------------------->
+
+    </li>
+  </ul>
+  <script src="js/accordion.js"></script>
+</body>
+
+
+</html>

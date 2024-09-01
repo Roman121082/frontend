@@ -117,7 +117,7 @@ kbd,
 samp {
   font-family: monospace, monospace;
   /* 1 */
-  font-size: 1em;
+  font-size: 18px;
   /* 2 */
 }
 
@@ -376,4 +376,20 @@ template {
 
 [hidden] {
   display: none;
+}
+
+td {
+  font-size: 18px;
+  font-family: 400;
+}
+
+tbody {
+  font-size: 18px;
+  font-family: 400;
+}
+
+tr,
+th {
+  font-size: 18px;
+  font-family: 400;
 }
