@@ -28,6 +28,8 @@
 
     <!-- js======================================================== -->
     <li class="info-box__item">
+
+      <!--======================================================= -->
       <div class="accordionItem close">
         <h2 class="accordionItemHeading">Random</h2>
 
@@ -44,8 +46,185 @@
           Производит удаление дробной части без округления: 3.1 становится 3, а -1.1 — -1.
 
         </div>
-
       </div>
+      <!--======================================================= -->
+
+      <!--=Циклы====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Циклы, break - выход из цикла, continue - пропустить значение, return -
+          прерывание функции</h2>
+        <div class="accordionItemContent">
+          Пока:
+          <code>
+    while (n < 5) {
+      n++;
+      console.log(n);
+    }
+  </code>
+          *****************************************
+          Делай пока:
+          <code>
+    do {
+      n++;
+      console.log(n);
+    }  while (n > 5) <span>// выполняется хотя бы 1 раз</span>
+  </code>
+          *****************************************
+          <code>
+    for (let i = 0; i < 10; i+=1){
+      if (i === 5) break; <span>// прерывание цикла</span>
+      if (!(i % 3)) continue; <span>// пропустили 3, 6, 9 - не попало в console.log();</span>
+      console.log(i);
+    }
+  </code>
+          *****************************************
+          Вложенный цикл (таблица умножения):
+          <code>
+    for (let i = 2; i < 10; i++1){
+      console.log('______________');
+      for (let y = 2; y < 10; y++1){
+        console.log(`${i} * ${y} = ${i * y}`);
+      }
+    }
+  </code>
+          *****************************************
+          Цикл в функции:
+          <code>
+            const foo = () => {
+              for (let i = 2; i < 10; i++1){
+                console.log('______________');
+                for (let y = 2; y < 10; y++1){
+                  if (i > 5) return; <span>// функция прерывается на 6-ке</span>
+                  console.log(`${i} * ${y} = ${i * y}`);
+                }
+              }
+            }
+
+  </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+      <!--=Массивы array====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Массивы array, данные можно менять хоть и const</h2>
+        <div class="accordionItemContent">
+          <code>
+            const items = []; <span>// объявление массива</span>
+            const items = [1, 2, 3, 4]; <span>// объявление массива с данными</span>
+let array = new Array(); <span>// создание пустого массива через конструктор</span>
+let array = new Array(1, 2, 3, 4); <span>// создание массива</span>
+
+const animals ['mouse', 'cat',,, 'dog'] <span>// с двумя пустыми элементами</span>
+animals.length = 10; <span>// устанавливаем количество элементов в массиве (с пустыми элементами после 'dog')</span>
+animals.length = 2; <span>// в массиве остаются только 'mouse' и 'cat' остальное удалили</span>
+console.log(animals[1]); <span>// обращение к элементу 'cat'</span>
+console.log(animals.length - 1); <span>// обращение к последнему элементу, когда не знаем сколько их</span>
+console.log(animals[15]); <span>// получаем undefined</span>
+animals[1]  = 'fish'; <span>// поменяли 'cat' на 'fish'</span>
+animals[5]  = 'monkey'; <span>//  добавили 6-ой элемент 'monkey' (с индексом 5)</span>
+
+animals.push('fish', 'monkey'); <span>// добавляем 'fish', 'monkey' в конец массива</span>
+animals.unshift('fish', 'monkey'); <span>// добавляем 'fish', 'monkey' в начало массива</span>
+animals.pop(); <span>// удаляет последний элемент</span>
+animals.shift(); <span>// удаляет первый элемент</span>
+
+const one = animals.pop(); <span>// возвращает то что удалил (вытащить и где-то использовать)</span>
+console.log(one); 
+const two = animals.shift(); <span>// возвращает то что удалил (вытащить и где-то использовать)</span>
+console.log(two);
+
+delete animals[1] <span>// удалили 1 индекс, но осталось пустое место empty (дыра в массиве)</span>
+
+console.log(typeof animals); <span>// неправильно - выведет тип как object</span>
+console.log(Array.isArray(animals)); <span>// покажет что действительно массив</span>
+          </code>
+
+        </div>
+      </div>
+      <!--======================================================= -->
+      <!--=Перебор массава====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Перебор массава for, for in, for of</h2>
+        <div class="accordionItemContent">
+          <code>
+          const animals ['mouse', 'cat', 'dog'];
+          </code>
+          Через for
+          <code>
+          const printArr = arr => {
+            for (let i = 0; i < arr.length; i += 1) {
+              const elem = arr[i];
+              console.log(`Элемент под индексом ${i} - ${elem}`);
+            }
+          }
+          printArr(animals)
+          </code>
+          Через for in:
+          <code>
+            const printArr = arr => {
+              for (const key in arr) { <span>// key или i - не имеет значения</span>
+                console.log(`Элемент под индексом ${key} - ${arr[key]}`);
+              }
+              printArr(animals)
+              </code>
+          Через for of (используется если ключи (индексы) не нужны):
+          <code>
+                const printArr = arr => {
+                  for (const elem of arr) {
+                    console.log(`Элемент ${elem}`);
+                  }
+                  printArr(animals)
+                  </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--==Объекты===================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Объект - не является коллекцией</h2>
+
+        <div class="accordionItemContent">
+          Создать пустой объект:
+          <code>
+  const obj = Object.create(null);
+</code>
+          Объект:
+
+          <code>
+          const user = {
+          firstName: 'Роман',
+          secondName: 'Чернов',
+        'favorite weapon': 'Glock 19',
+
+        cars: ['opel', 'mazda', 'bmw'], <span>//массив</span>
+        age: 41,
+
+      status: {
+        alive: true,
+        wanted: true,
+        free: true, <span>//Объект</span> 
+      },
+
+      say() {
+        console.log('Меня зовут Роман'); <span>// функция</span>
+      }
+      }
+
+      delete user.cars; <span>// удалить свойство объекта - плохая практика</span>
+user.say(); <span>// вызов функции say из объекта</span>
+
+user.firstName = 'Alex' <span>// поменят значение свойства</span> 
+user.smoke = true; <span>// добавить войство</span>
+      </code>
+          Перебор объекта:
+          <code>
+            const keys = Object.keys(user); <span>// метод keys - для получения свойств (ключей) без значений</span>
+            const values = Object.velues(user); <span>// метод velues - для получения значений у свойств (ключей)</span>
+          </code>
+
+        </div>
+      </div>
+      <!--======================================================= -->
 
       <div class="accordionItem close">
         <h2 class="accordionItemHeading">функция / рекурсия / формула</h2>
@@ -1158,7 +1337,7 @@ let usersById = groupById(users);
     </li>
 
   </ul>
- 
+
 
 
   <script src="js/accordion.js"></script>
