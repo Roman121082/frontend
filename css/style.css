@@ -119,9 +119,22 @@ code span {
 
 
 h4 {
+  font-size: 17px;
   margin: 0;
+  border-top: tomato solid 2px;
+  border-left: tomato solid 2px;
 }
 
+h4:first-child {
+  border-top: none;
+  border-left: none;
+}
+
+h5 {
+  font-size: 15px;
+  line-height: 15px;
+  margin: 0;
+}
 
 .menu__list {
   display: flex;

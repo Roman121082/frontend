@@ -54,15 +54,14 @@
         <h2 class="accordionItemHeading">Циклы, break - выход из цикла, continue - пропустить значение, return -
           прерывание функции</h2>
         <div class="accordionItemContent">
-          Пока:
+          <h4>Пока:</h4>
           <code>
     while (n < 5) {
       n++;
       console.log(n);
     }
   </code>
-          *****************************************
-          Делай пока:
+          <h4>Делай пока:</h4>
           <code>
     do {
       n++;
@@ -77,8 +76,7 @@
       console.log(i);
     }
   </code>
-          *****************************************
-          Вложенный цикл (таблица умножения):
+          <h4>Вложенный цикл (таблица умножения):</h4>
           <code>
     for (let i = 2; i < 10; i++1){
       console.log('______________');
@@ -87,8 +85,7 @@
       }
     }
   </code>
-          *****************************************
-          Цикл в функции:
+          <h4>Цикл в функции:</h4>
           <code>
             const foo = () => {
               for (let i = 2; i < 10; i++1){
@@ -99,14 +96,13 @@
                 }
               }
             }
-
   </code>
         </div>
       </div>
       <!--======================================================= -->
       <!--=Массивы array====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы array, данные можно менять хоть и const</h2>
+        <h2 class="accordionItemHeading">Массивы array - length, push, unshift, pop, shift, delete, tipeof</h2>
         <div class="accordionItemContent">
           <code>
             const items = []; <span>// объявление массива</span>
@@ -144,12 +140,12 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
       <!--======================================================= -->
       <!--=Перебор массава====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Перебор массава for, for in, for of</h2>
+        <h2 class="accordionItemHeading">Массивы - перебор массава for, for in, for of</h2>
         <div class="accordionItemContent">
           <code>
           const animals ['mouse', 'cat', 'dog'];
           </code>
-          Через for
+          <h4>Через for</h4>
           <code>
           const printArr = arr => {
             for (let i = 0; i < arr.length; i += 1) {
@@ -159,7 +155,7 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
           }
           printArr(animals)
           </code>
-          Через for in:
+          <h4>Через for in:</h4>
           <code>
             const printArr = arr => {
               for (const key in arr) { <span>// key или i - не имеет значения</span>
@@ -167,7 +163,7 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
               }
               printArr(animals)
               </code>
-          Через for of (используется если ключи (индексы) не нужны):
+          <h4>Через for of (используется если ключи (индексы) не нужны):</h4>
           <code>
                 const printArr = arr => {
                   for (const elem of arr) {
@@ -175,6 +171,181 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
                   }
                   printArr(animals)
                   </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--=Методы массивов====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Массивы - методы массивов splice, slice, includes, join, sort</h2>
+        <div class="accordionItemContent">
+          <h4>splice - удаление элементов</h4>
+          <code>
+  const animals ['mouse', 'cat', 'dog'];
+  const removed = animals.splice(2, 1) <span>// удалит со 2-го элемента, один элемент - останется 'mouse', 'cat' </span>
+  const removed = animals.splice(2, 0, 'monkey') <span>// ничего не удалит, добавит 'monkey' после 'cat'</span>
+</code>
+          <h4>slice - создание нового ассива на основе другого</h4>
+          <code>
+  const newArray = animals.slice(2) <span>// создание массива начиная со второго - получилось ['dog']</span>
+</code>
+          <h4>includes - проверяет есть ли элемент в массиве</h4>
+          <code>
+  console.log(animals.includes('cat')); <span>// true либо false</span>
+</code>
+          <h4>join - передает строку из массива</h4>
+          <code>
+  console.log(animals.join('-')); <span>// передас строку с элементами через дефис</span>
+  console.log(animals.join(', ')); <span>// частый кейс</span>
+</code>
+          <h4>sort - сортировка</h4>
+          <code>
+  const sortArray = arr => {
+    
+    arr.sort(); <span>// по алфавиту / с числами сначала единицы потом двойки - не по величине значения</span>
+    arr.sort((a, b) => a - b); <span>// с колбек функцией для правильного порядка цифр</span>
+    arr.sort((a, b) => b - a); <span>// реверс</span>
+
+    console.log(arr);
+
+    return arr;
+    return arr.reverse(); <span>// реверс (работает также для текста в отличае от b - a)</span>
+  }
+
+  sortArray(animals)
+</code>
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--=Массивы - деструктуризация====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Массивы - деструктуризация</h2>
+        <div class="accordionItemContent">
+          <h4>Добираемся до элементов</h4>
+          <code>
+  const coord = [54, 20]
+
+  console.log('coord[0]: ', coord[0]); <span>// привычный способ</span>
+  console.log('coord[1]: ', coord[1]); <span>// привычный способ</span>
+
+  const [ x, y ] = coord; <span>// деструктуризация</span>
+  console.log('coord[0]: ', x); <span>// деструктуризация</span>
+  console.log('coord[1]: ', y); <span>// деструктуризация</span>
+
+  const [ ,, x, y ] = coord; <span>// первые 2 элемента пропущены</span>
+  const [ ,, [x, y] ] = coord; <span>// добираемся до элементов внутри вложенного массива</span>
+  const [ ,, x = 0, y = 11 ] = coord; <span>// передаем значения если их не было</span>
+</code>
+          <h4>Rest оператор - используется только в конце</h4>
+          <code>
+            const [ x, y, ...arr ] = coord; <span>// все оставшиеся попадут в arr</span>
+            console.log(arr);
+          </code>
+          <h5>Первая буква заглавная + остальные символы</h5>
+          <code>
+            const str = 'heLLo WoRld'
+            const [a, ...rest] = str;
+            console.log(a.toUpperCase() + rest.join('').toLowerCase()); <span>// join собирает отставщиеся разрозненные символы в одну строку</span>
+          </code>
+          <h4>Spread оператор - для вставки в любое место массива</h4>
+          <code>
+            const numbers = [3, 4, 5];
+            const newNumbers = [1, 2, ...numbers, 6, 7]
+          </code>
+          <h4>клонирование массива</h4>
+          <code>
+const cloneNambers = [...numbers] <span>// клон</span>
+const cloneNambers = numbers.slice() <span>// тоже клон</span>
+
+console.log(cloneNambers === numbers); <span>// false</span>
+          </code>
+          <h5>Пример использования клона</h5>
+          <code>
+            const sortArray = arr => {
+
+              const cloneArr = [...arr];
+
+              cloneArr.sort((a, b) => a - b); <span>// отсортировали клон, массив numbers не поменялся</span>
+
+              return cloneArray;
+            };
+            const newArray = sortArray(numbers);
+            console.log(newArray);
+          </code>
+          <h5>Либо так - частый кейс</h5>
+          <code>
+            const sortArray = ([...arr]) => { <span>// сразу создали клон</span>
+
+            arr.sort((a, b) => a - b); <span>// отсортировали клон, массив numbers не поменялся</span>
+
+              return arr;
+            };
+            const newArray = sortArray(numbers);
+            console.log(newArray);
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--=Массивы - условия====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Массивы - типы задач</h2>
+        <div class="accordionItemContent">
+          <h4>Четные / нечетные</h4>
+          <code>
+            const foo = (arr) => {
+
+              const newArr = [];
+
+              for (let i = 0; i < arr.length; i++) {
+                if (!(arr[i] % 2)) { <span>// нечетные</span>
+                  newArr.push(arr[i]);
+                }
+              }
+            
+              return newArr
+            }
+            
+            const newArray = foo(numbers);
+            console.log(newArray);
+      </code>
+
+          <h4>Удовлетворяет ли хотя бы 1 элемент</h4>
+          <code>
+const foo = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 500) { <span>// если хоть один больше 500 то true</span>
+      return true;
+    }
+  }
+
+  return fulse
+}
+
+const newArray = foo(numbers);
+console.log(newArray);
+          </code>
+          <h4>Другие задачи</h4>
+          <code>
+            const foo = (arr) => {
+
+              let n = 0;
+
+              for (let i = 0; i < arr.length; i++) {
+                if (!(arr[i] % 2)) { <span>// нечетные, то сложить</span>
+                 n += arr[i];
+                } else {
+                  n -= arr[i]; <span>// иначе вычесть</span>
+                }
+              }
+            
+              return n
+            }
+            
+            const newArray = foo(numbers);
+            console.log(newArray); <span>// на выходе одно число - кого больше четных или нечетных</span>
+      </code>
         </div>
       </div>
       <!--======================================================= -->
