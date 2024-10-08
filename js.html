@@ -174,6 +174,59 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
         </div>
       </div>
       <!--======================================================= -->
+      <!--=Методы перебора массава====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Массивы - Методы перебора forEach, find, filter</h2>
+        <div class="accordionItemContent">
+          <h4>forEach</h4>
+          Напрямую:
+          <code>
+          const numbers  = [152, 3, 22, 33, 2, 16, 57, 542, 512];
+
+          numbers.forEach(item, i, arr) => { <span>// аргументы - элемент, индекс, массив</span>
+            console.log(i); <span>// выведет индекс</span>
+          }
+        </code>
+          <h5>через функцию:</h5>
+          <code>
+  const foo = (item, i, arr) => {
+    console.log(item, i, arr); <span>// выведет эелемнт, его индекс и сам массив</span>
+  }
+  {
+    const numbers  = [152, 3, 22, 33, 2, 16, 57, 542, 512];
+
+    numbers.forEach(foo);
+  }
+</code>
+          <h5>через переменную:</h5>
+          <code>
+  const items = numbers.forEach((item, i, arr) => {
+  console.log(item, i, arr);
+  })
+
+  console.log(items);
+</code>
+          <h4>find - проверяет условие</h4>
+          <code>
+  const items = numbers.find((item, i, arr) => {
+  return item === 5; <span>// fulse в массиве нет 5</span>
+  return item === 3; <span>// получим 3 - в массиве есть 3</span>
+  return item % 2 === 0; <span>// получим все четные</span>
+  return item % 2; <span>// не равно 0 - получим нечетные</span>
+  })
+
+  console.log(items); <span>// fulse в массиве нет 5</span>
+</code>
+          тоже самое - короткая запись:
+          <code>
+  const items = numbers.find((item, i, arr) => item % 2 === 0);
+  
+    console.log(items); <span>// получим все четные</span>
+</code>
+          <h4>filter</h4>
+        </div>
+      </div>
+      <!--======================================================= -->
 
       <!--=Методы массивов====================================================== -->
       <div class="accordionItem close">
@@ -288,7 +341,7 @@ console.log(cloneNambers === numbers); <span>// false</span>
       </div>
       <!--======================================================= -->
 
-      <!--=Массивы - условия====================================================== -->
+      <!--=Массивы - типы задач====================================================== -->
       <div class="accordionItem close">
         <h2 class="accordionItemHeading">Массивы - типы задач</h2>
         <div class="accordionItemContent">
