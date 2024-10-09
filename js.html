@@ -102,7 +102,7 @@
       <!--======================================================= -->
       <!--=Массивы array====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы array - length, push, unshift, pop, shift, delete, tipeof</h2>
+        <h2 class="accordionItemHeading array">Массивы array - length, push, unshift, pop, shift, delete, tipeof</h2>
         <div class="accordionItemContent">
           <code>
             const items = []; <span>// объявление массива</span>
@@ -140,7 +140,7 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
       <!--======================================================= -->
       <!--=Перебор массава====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы - перебор массава for, for in, for of</h2>
+        <h2 class="accordionItemHeading array">Массивы - перебор массива for, for in, for of</h2>
         <div class="accordionItemContent">
           <code>
           const animals ['mouse', 'cat', 'dog'];
@@ -176,7 +176,8 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
       <!--======================================================= -->
       <!--=Методы перебора массава====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы - Методы перебора forEach, find, filter</h2>
+        <h2 class="accordionItemHeading array">Массивы - Методы перебора forEach, find, filter, map, some, every, reduce
+        </h2>
         <div class="accordionItemContent">
           <h4>forEach</h4>
           Напрямую:
@@ -224,13 +225,111 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
     console.log(items); <span>// получим все четные</span>
 </code>
           <h4>filter</h4>
+          <code>
+            const items = numbers.find((item, i, arr) => item % 2 === 0); <span>// возвращает массив 22, 2, 16 и т.д.</span>
+            const items = numbers.find((item, i, arr) => !(item % 2)); <span>// тоже самое</span>
+            const items = numbers.find((item, i, arr) => item % 2); <span>// возвращает массив 3, 33, 15 и т.д.</span>
+            const items = numbers.find((item, i, arr) => item > 50); <span>// все элементы больше 50</span>
+            const items = numbers.find(item => item > 50); <span>// все элементы больше 50</span>
+
+            console.log(items);
+          </code>
+          <h4>map - делает то же что и forEach</h4>
+          <code>
+            const newArr = numbers.map((item) => {
+
+              return item * 2; <span>// получим новый массив с элементами умноженными на 2</span>
+              return item ** 2; <span>// получим новый массив с элементами возведенными в квадрат</span>
+              return item.toString(); <span>// получим строки</span>
+              return item[0].toUpperCase() + item.slice(1).toLowerCase(); <span>// Элементы с большой буквы</span>
+            })
+
+            console.log(newArr);
+          </code>
+          <h4>some - работа с условиями, возвращает true или fulse</h4>
+          <code>
+            const newArr = numbers.some((item) => typeof item === 'string'); <span>// fulse если ни один из элементов не является строкой иначе true если хоть один</span>
+
+            console.log(newArr);
+          </code>
+          <h4>every - как some только все элементы должны удовлетворять условиям</h4>
+          <code>
+            const newArr = numbers.every((item) => typeof item === 'string'); <span>// fulse если все элементы не строки</span>
+            const newArr = numbers.every((item) => typeof item === 'number'); <span>// fulse если все элементы не цифры</span>
+
+            console.log(newArr);
+          </code>
+          <h4>reduse - приниает 4 параметра</h4>
+          <code>
+            const nums = [1, 2, 3]
+
+            const newItem = nums.reduce((acc, item, i, arr) => { <span>// в acc попадает 1 а в item 2</span>
+
+              return acc + item; <span>// вернет 6 (2 итерации)</span>
+            })
+
+              return acc * item; <span>// вернет 0 - умножили на 0 (3 итерации) </span>
+            }, 0) <span>// acc начиная с нуля</span>
+
+            console.log(newItem);
+          </code>
+          <h5>объкты в массиве</h5>
+          <code>
+            const scientist = [
+            {
+              name: 'mendeleev',
+              count: 3,
+            },
+            {
+              name: 'aristotle',
+              count: 5,
+            },
+            {
+              name: 'tesla',
+              count: 4,
+            },
+            ];
+
+            const newItem = scientist.reduce((acc, item, i, arr) =>
+            const newItem = scientist.reduceRight((acc, item, i, arr) => <span>// reduceRight в обратном порядке</span>
+
+              return acc + item.count; <span>// вернет 12)</span>
+            }, 0) <span>// здесь первый аргумент обязателен иначе в него попадет объект а не цифра</span>
+
+              return acc + item.name + ', '; <span>// для текста</span>
+            }, '') <span>// для текста пустая строка</span>
+
+            console.log(newItem);
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+      <!--=Методы перебора массава====================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading array">Массивы - Методы flat, flatMap
+        </h2>
+        <div class="accordionItemContent">
+          <h4>flat</h4>
+          <code>
+  const allCashbox = [ [12, 4500], [7, 3210], [[4, 520]], [[3, 5810]] ];
+
+  console.log(allCashbox.flat(infinity)); <span>// выдернет все элементы из вложенных массивов в один. infinity - глубина вложенности</span>
+</code>
+          <h4>flatMap</h4>
+          <code>
+  const phrases = ['Привет друзья', 'Как дела'];
+
+  const allWords = phrases.flatMap(str => str.split(' ')); <span>// разобъет на массив, в котором каждое слово по отдельности</span>
+
+  console.log(allWords);
+</code>
         </div>
       </div>
       <!--======================================================= -->
 
       <!--=Методы массивов====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы - методы массивов splice, slice, includes, join, sort</h2>
+        <h2 class="accordionItemHeading array">Массивы - методы массивов splice, slice, includes, join, sort</h2>
         <div class="accordionItemContent">
           <h4>splice - удаление элементов</h4>
           <code>
@@ -272,8 +371,8 @@ console.log(Array.isArray(animals)); <span>// покажет что действ
       <!--======================================================= -->
 
       <!--=Массивы - деструктуризация====================================================== -->
-      <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы - деструктуризация</h2>
+      <div class="accordionItem close even">
+        <h2 class="accordionItemHeading array">Массивы - деструктуризация, клоны</h2>
         <div class="accordionItemContent">
           <h4>Добираемся до элементов</h4>
           <code>
@@ -343,7 +442,7 @@ console.log(cloneNambers === numbers); <span>// false</span>
 
       <!--=Массивы - типы задач====================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Массивы - типы задач</h2>
+        <h2 class="accordionItemHeading array">Массивы - типы задач</h2>
         <div class="accordionItemContent">
           <h4>Четные / нечетные</h4>
           <code>
@@ -405,15 +504,14 @@ console.log(newArray);
 
       <!--==Объекты===================================================== -->
       <div class="accordionItem close">
-        <h2 class="accordionItemHeading">Объект - не является коллекцией</h2>
+        <h2 class="accordionItemHeading">Объекты</h2>
 
         <div class="accordionItemContent">
-          Создать пустой объект:
+          <h4>Создать пустой объект:</h4>
           <code>
   const obj = Object.create(null);
 </code>
-          Объект:
-
+          <h4>Объект:</h4>
           <code>
           const user = {
           firstName: 'Роман',
@@ -430,22 +528,23 @@ console.log(newArray);
       },
 
       say() {
-        console.log('Меня зовут Роман'); <span>// функция</span>
+        console.log('Меня зовут Роман'); <span>// функция в объеке</span>
       }
       }
-
-      delete user.cars; <span>// удалить свойство объекта - плохая практика</span>
-user.say(); <span>// вызов функции say из объекта</span>
-
-user.firstName = 'Alex' <span>// поменят значение свойства</span> 
-user.smoke = true; <span>// добавить войство</span>
       </code>
-          Перебор объекта:
+          <h4>Работа с объектом</h4>
+          <code>
+        delete user.cars; <span>// удалить свойство объекта - плохая практика</span>
+        user.say(); <span>// вызов функции say из объекта</span>
+        
+        user.firstName = 'Alex' <span>// поменят значение свойства</span> 
+        user.smoke = true; <span>// добавить войство</span>
+      </code>
+          <h5>Перебор объекта:</h5>
           <code>
             const keys = Object.keys(user); <span>// метод keys - для получения свойств (ключей) без значений</span>
             const values = Object.velues(user); <span>// метод velues - для получения значений у свойств (ключей)</span>
           </code>
-
         </div>
       </div>
       <!--======================================================= -->

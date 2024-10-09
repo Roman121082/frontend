@@ -24,11 +24,15 @@
   padding-left: 50px;
   font-size: 16px;
   font-weight: 400;
-  background: #6f8390;
-  color: #fff;
+  background: #c8dfee;
+  color: rgb(20, 7, 7);
   width: 100%;
   border-radius: 3px;
   box-sizing: border-box;
+}
+
+.array {
+  background: #d8f3d8;
 }
 
 .accordionItemHeading span {
