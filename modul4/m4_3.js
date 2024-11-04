@@ -1,14 +1,11 @@
-"use strict";
-const nameProduct = prompt('Наименование товара');
-let quantityProduct = prompt('Количество товара');
-const categoryProduct = prompt('Категория товара');
-let priceProduct = prompt('Цена товара');
+'use strict';
 
-quantityProduct = +quantityProduct;
-console.log('Количество товара', quantityProduct);
-priceProduct = +priceProduct;
-console.log('Цена товара', priceProduct);
+function convertertText(string) {
 
-const summPriceProduct = quantityProduct * priceProduct;
+  const newString = string.trim().toLowerCase();
+  return newString[0].toUpperCase() + newString.slice(1);
 
-console.log('На складе имееется', quantityProduct, nameProduct, ' на сумму', summPriceProduct, 'рублей');
+}
+
+convertertText('привет Мир');
+

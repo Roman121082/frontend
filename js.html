@@ -31,6 +31,89 @@
 
       <!--======================================================= -->
       <div class="accordionItem close">
+        <h2 class="accordionItemHeading">console.log();</h2>
+
+        <div class="accordionItemContent">
+          <code>console.log()
+            console.error(error);
+            console.warn(warn);
+            console.info(info);
+          </code>
+        </div>
+      </div>
+
+      <!--======================================================= -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Скалярные типы данных</h2>
+
+        <div class="accordionItemContent">
+          <code>console.log('Числа:', 5, 3.5, Infinity, -Infinity, NaN )
+console.log('bigInt', 10n, BigInt(10));
+console.log('Строки:', 'Mouse', "Keyboard", `Monitor`);
+console.log('Логический, Boolean:', true, false);
+console.log(undefined);
+console.log('symbol:', Symbol(), Sybol('key'));
+
+console.log( 0 / 0); <span>// NaN</span>
+console.log( 'Строка' * 4); <span>// NaN</span>
+console.log(typeof Infinity); <span>//number</span>
+console.log(typeof NaN); <span>//number</span>
+
+console.log(Number.MAX_SAFE_INTEGER); <span>//Максимальное число</span>
+console.log(Number.MIN_SAFE_INTEGER); <span>//Минимальное число</span>
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+      <!--======================================================= -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Number</h2>
+        <div class="accordionItemContent">
+          <code>let n =5;
+            console.log(Number.isInteger(n));  <span>//Проверяет целое ли число</span>
+            console.log(Number.isFinite(n));  <span>//Проверяет число или нет</span>
+
+            if (isNaN(priceProduct)) {
+              console.log('Цена товара - Вы ввели некорректные данные')
+            };
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--======================================================= -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Динамическая типизации</h2>
+        <div class="accordionItemContent">
+          <code>let test;
+            test = String(5+50)
+            console.log(typeof test);  <span>//string</span>
+            console.log(test);  <span>//55</span>
+
+            test = (50).toString()
+            console.log(typeof test);  <span>//string</span>
+            console.log(test);  <span>//50</span>
+
+            test = (false).toString()
+            console.log(typeof test);  <span>//string</span>
+            console.log(test);  <span>//false</span>
+
+            test = 30 + ''
+            console.log(typeof test);  <span>//string</span>
+            console.log(test);  <span>//30</span>
+
+            test = [1, 2, 3] + ''
+            console.log(typeof test);  <span>//string</span>
+            console.log(test);  <span>//1,2,3</span>
+
+            test = '5' / 2
+            console.log(typeof test);  <span>//number</span>
+            console.log(test);  <span>//2.5</span>
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+      <div class="accordionItem close">
         <h2 class="accordionItemHeading">Random</h2>
 
         <div class="accordionItemContent">
@@ -45,6 +128,93 @@
           Math.trunc (не поддерживается в Internet Explorer)
           Производит удаление дробной части без округления: 3.1 становится 3, а -1.1 — -1.
 
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--======================================================= -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Строка с заглавной буквы</h2>
+
+        <div class="accordionItemContent">
+          <code>
+            function convertertText(string) {
+
+              const newString = string.trim().toLowerCase();
+              return newString[0].toUpperCase() + newString.slice(1);
+            
+            }
+            
+            convertertText('привет Мир');
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+      <!--======================================================= -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Строка реверс</h2>
+
+        <div class="accordionItemContent">
+          <code>
+            const reverseString = (string) => string.split("").reverse().join("");
+
+            console.log(`результат реверса текста: ${reverseString("Привет мир")}`);
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+      <!--======================================================= -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Функции</h2>
+
+        <div class="accordionItemContent">
+          <code>
+const calc = (a, b, c, ...arg) => { <span>// парааметры и рестоператор - массив</span>
+  console.log(a);
+  console.log(b);
+  console.log(c);
+  console.log(arg); <span>//20, 25, 30, 35</span>
+};
+
+calc(5, 10, 15, 20, 25, 30, 35) <span>// аргументы функции</span>
+</code>
+          <h4>Функция должна возвращать результат иначе это процедура</h4>
+          <code>
+const calc = (a=100, b=0, c=0) => { <span>// парааметры по умолчанию</span>
+  return a + b + c;
+};
+
+const res = calc(20, 30, 50);
+</code>
+          <h4>
+            Копирование входных данных функции
+          </h4>
+          <code>
+  const getTotalPrice = money => {
+    let resultMoney = money;
+
+    resultMoney *= 0.95;
+
+    resultMoney -= 100;
+
+    return resultMoney;
+  }
+
+  console.log(getTotalPrice(500));
+</code>
+          <h4>
+            callback функция внутри функции
+          </h4>
+          <code>
+  const getTotalPrice = (money, fn) => {
+    let resultMoney = fn(money);
+
+    return resultMoney;
+  }
+
+  const result = getTotalPrice(1000, (n) => n * 0.8)
+  console.log(result); <span>// 800</span>
+</code>
         </div>
       </div>
       <!--======================================================= -->
@@ -544,6 +714,64 @@ console.log(newArray);
           <code>
             const keys = Object.keys(user); <span>// метод keys - для получения свойств (ключей) без значений</span>
             const values = Object.velues(user); <span>// метод velues - для получения значений у свойств (ключей)</span>
+          </code>
+        </div>
+      </div>
+      <!--======================================================= -->
+
+      <!--==Коллекции===================================================== -->
+      <div class="accordionItem close">
+        <h2 class="accordionItemHeading">Коллекции defineProperty</h2>
+        <div class="accordionItemContent">
+          <h4>defineProperty</h4>
+          <code>
+  const car = {
+    car: 'mini',
+    model: 'cooper'
+    price: 30000,
+  };
+</code>
+          <h5>С флагами configurable, enumerable, writeble</h5>
+          <code>
+  Object.defineProperty(car, 'model', {
+    configurable: true, <span>// true можно менять свойство, fulse менять можно, удалять нельзя delete car.modal вызовет ошибку</span>
+    enumerable: true, <span>// fulse запрещает итерировать это свойство</span>
+    writeble: true, <span>// fulse запрещает менять это свойство</span>
+      });
+    
+      car.madel = 'electric'; <span>// изменить свойство</span>
+      delete car.model; <span>// удалить свойство</span>
+</code>
+          <h5>get() set()</h5>
+          <code>
+            Object.defineProperty(car, 'fullName', {
+              get() {
+                return `${this.car} ${this.model}`;
+              },
+              set(val)(property) comment: any
+              this.comment = val;
+            });
+             console.log(car.fullName);
+
+             car.fullName = 'тачка огонь'
+          </code>
+          <h5>get() set() без defineProperty</h5>
+          <code>
+            const car = {
+              car: 'mini',
+              model: 'cooper'
+              price: 30000,
+              get comment(val) {
+                if (typeof val === 'string') {
+                  this.trueComment = val;
+                }
+              },
+              trueComment: 'not'
+            };
+
+            car.comment = 123; <span>// выведет not</span>
+            car.comment = 'Супер тачка' <span>// выведет строку</span>
+            console.log(car.comment);
           </code>
         </div>
       </div>

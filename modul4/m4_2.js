@@ -1,10 +1,12 @@
 "use strict";
 
-const nameProduct = 'apple';
-const quantityProduct = 10;
-const categoryProduct = 'fruit';
-const priceProduct = 15;
+// const productName = prompt('введите название товара');
+let productQuantity = prompt('кол');
+let productPrice = prompt('цена');
 
-const summPriceProduct = quantityProduct * priceProduct;
-console.log(nameProduct);
-console.log('Общая сумма', ' - ', summPriceProduct);
+let productQuantity = +productQuantity;
+let price = +productPrice;
+console.log(typeof productName);
+console.log(typeof quantity);
+console.log(typeof price);
+console.log(quantity * price);
